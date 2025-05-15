@@ -54,18 +54,132 @@
         </form>
       </div>
     </nav>
+    
     <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm bg-dark text-light">
-            <img src="UNFINISHED.avif" class="card-img-top" alt="Watch 1">
-            <div class="card-body">
-              <h5 class="card-title">UNDER CONSTRUCTION!</h5>
-              <p class="card-text">PLACEHOLDER FOR INFORMATION</p>
-              <a href="#" class="btn btn-primary">View Details</a>
-            </div>
-        
+      <div class="row" id="dynamic-container">
+        <!-- Cards will be dynamically added here -->
+      </div>
+    </div>
+    
+    <script>
+      // Data for the cards
+      const cardsData = [
+        {
+          imgSrc: "TISSOT.jpg",
+          title: "Tissot - Everytime Patterned Black Leather Strap Watch",
+          text: "£245.00",
+          link: "#"
+        },
+        {
+          imgSrc: "Citizengreen.jpg",
+          title: "Citizen - Weekender Eco-Drive Green",
+          text: "£169.00",
+          link: "#"
+        },
+        {
+          imgSrc: "skagen.jpg",
+          title: "SKAGEN - Mens Aaren Ocean Seaweed #tide ocean material ",
+          text: "£127.95",
+          link: "#"
+        },
+        {
+          imgSrc: "CASIO.jpg",
+          title: "CASIO -Vintage Gold Dual Display ",
+          text: "£79.95",
+          link: "#"
+        },
+        {
+          imgSrc: "manwatch.webp",
+          title: "Longines Flagship Heritage 38.5mm – Classic Steel Case",
+          text: "£809.99",
+          link: "#"
+        },
+        {
+          imgSrc: "SEIKO.jpg",
+          title: "SEIKO - Astron Limited Edition GPS Solar 3X",
+          text: "£2,310.00",
+          link: "#"
+        },
+        {
+          imgSrc: "RADO.jpg",
+          title: "RADO - True Square Automatic Open Heart Bracelet Watch ",
+          text: "£2,450.00",
+          link: "#"
+        },
+        {
+          imgSrc: "TISSOTLADY.jpg",
+          title: "TISSOT - Lovely Gold Tone Bracelet Watch",
+          text: "£365.00",
+          link: "#"
+        },
+        {
+          imgSrc: "swatchlady.jpg",
+          title: "SWATCH -  Twice Again Strap Watch",
+          text: "£73.95",
+          link: "#"
+        },
+        {
+          imgSrc: "anotherrado.jpg",
+          title: "RADO - Ladies Integral Diamonds Quartz Black and Gold",
+          text: "£2,250.00",
+          link: "#"
+        },
+        {
+          imgSrc: "fossil.jpg",
+          title: "FOSSIL - Jacqueline Date Blush Leather Strap Watch",
+          text: "£129.00",
+          link: "#"
+        },
+        {
+          imgSrc: "kor.jpg",
+          title: "MICHAEL KORS - Portia Mesh Rose Tone Bracelet Watch",
+          text: "£219.00",
+          link: "#"
+        },
+        {
+          imgSrc: "UNFINISHED.avif",
+          title: "UCHILD WATCH!",
+          text: "PLACEHOLDER FOR INFORMATION",
+          link: "#"
+        },
+        {
+          imgSrc: "UNFINISHED.avif",
+          title: "CHILD WATCH!",
+          text: "PLACEHOLDER FOR INFORMATION",
+          link: "#"
+        },
+        {
+          imgSrc: "UNFINISHED.avif",
+          title: "CHILD WATCH!",
+          text: "PLACEHOLDER FOR INFORMATION",
+          link: "#"
+        },
+        // Add more objects as needed
+      ];
+    
+      // Get the container where cards will be added
+      const container = document.getElementById("dynamic-container");
+    
+      // this loops through the data and create cards
+      cardsData.forEach((card) => {
+        const cardHTML = `
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm bg-dark text-light">
+              <img src="${card.imgSrc}" class="card-img-top" alt="${card.title}">
+              <div class="card-body">
+                <h5 class="card-title">${card.title}</h5>
+                <p class="card-text">${card.text}</p>
+                <a href="${card.link}" class="btn btn-primary mb1" style="background-color: black; color: white;border: black"">View Details</a>
+              </div>
 
+              
+            </div>
+          </div>
+        `;
+        container.innerHTML += cardHTML;
+      });
+    </script>>
+            
    
          <!-- Include jQuery -->
          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

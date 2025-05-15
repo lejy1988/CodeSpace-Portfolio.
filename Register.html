@@ -56,65 +56,79 @@
     </nav>
    
     <h1>Register</h1>
-    <form action="submit-form" method="post">
-        <div class="mb-3">
-            <label for="source" class="form-label">Where did you hear about us?</label>
-            <select id="source" name="source" class="form-select" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="Google">Google</option>
-                <option value="Word of Mouth">Word of Mouth</option>
-                <option value="Advert in local paper">Advert in local paper</option>
-                <option value="Yellow Pages">Yellow Pages</option>
-                <option value="Local">Local</option>
-            </select>
-        </div>
-      <form action="submit-form" method="post">
-       <div class="mb-3">
-        <label for="name">First Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter your First Name" required>
-    </div>
-    <div class="mb-3">
-        <label for="name">Last Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter your Last Name" required>
-    </div>
-
-        <label for="Number">Contact Number:</label>
-        <input type="number" id="email" name="email" placeholder="Enter your Number" required>
-       </div>
-        <div class="mb-3">
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="email" name="email" placeholder="Enter your DOB" required>
-        </div>
-        <div class="mb-3"></div>
-        <label for="email">First Line of address:</label>
-        <input type="email" id="email" name="email" placeholder="Enter your First line of address" required>
-    </div>
-    <div class="mb-3"></div>
-    <label for="email">Second Line of address:</label>
-    <input type="email" id="address" name="email" placeholder="Enter your Second line of address" required>
-</div>
-<div class="mb-3"></div>
-<label for="email">Postcode:</label>
-<input type="text" id="postcode" name="email" placeholder="Enter your Postcode" required>
-</div>  
-<hr>
-<div class="mb-3">
-<label for="email">Register Email:</label>
-<input type="email" id="email" name="email" placeholder="Enter your Registeration" required>
-</div>  
-
-<div class="mb-3">
-<label for="email">Password:</label>
-<input type="password" id="email" name="email" placeholder="Enter your Password" required>
-<label for="email">Confirm Password:</label>
-<input type="password" id="email" name="email" placeholder="Confirm your Password" required>
-</div>
-<hr>
-        <input type="submit" value="Submit">
-    
-        <input type="reset" value="Reset">
-      </form>
-       <!-- Include jQuery -->
+        <div class="container" style="min-height: 100vh; display: flex; align-items: center;">
+          <div class="row w-100" style="min-height: 80vh;">
+            <!-- Left Section for Image/Banner -->
+            <div class="col-md-6 d-flex justify-content-center align-items-stretch" >
+              <img src="WACTHREGISTER.jpg" alt="Banner" class="img-fluid w-100" style="object-fit:cover;height:100%; ">
+            </div>
+        
+            <!-- Right Section for Form -->
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+              <form action="submit-form" method="post" style="color: white; width: 100%; max-width: 500px;">
+                <h1 class="text-center">Register</h1>
+                <div class="mb-3">
+                  <label for="source" class="form-label">Where did you hear about us?</label>
+                  <select id="source" name="source" class="form-select" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Google">Google</option>
+                    <option value="Word of Mouth">Word of Mouth</option>
+                    <option value="Advert in local paper">Advert in local paper</option>
+                    <option value="Yellow Pages">Yellow Pages</option>
+                    <option value="Local">Local</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="name">First Name:</label>
+                  <input type="text" id="name" name="name" placeholder="Enter your First Name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="name">Last Name:</label>
+                  <input type="text" id="name" name="name" placeholder="Enter your Last Name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="number">Contact Number:</label>
+                  <input type="number" id="number" name="number" placeholder="Enter your Number" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="dob">Date of Birth:</label>
+                  <input type="date" id="dob" name="dob" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="address1">First Line of Address:</label>
+                  <input type="text" id="address1" name="address1" placeholder="Enter your First Line of Address" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="address2">Second Line of Address:</label>
+                  <input type="text" id="address2" name="address2" placeholder="Enter your Second Line of Address" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="postcode">Postcode:</label>
+                  <input type="text" id="postcode" name="postcode" placeholder="Enter your Postcode" class="form-control" required>
+                </div>
+                <hr>
+                <div class="mb-3">
+                  <label for="email">Register Email:</label>
+                  <input type="email" id="email" name="email" placeholder="Enter your Registration Email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="password">Password:</label>
+                  <input type="password" id="password" name="password" placeholder="Enter your Password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label for="confirm-password">Confirm Password:</label>
+                  <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your Password" class="form-control" required>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                  <input type="submit" value="Submit" class="btn btn-primary mb1" style="background-color: black; color: white; border: white">
+                  <input type="reset" value="Reset" class="btn btn-secondary">
+              
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>       <!-- Include jQuery -->
        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
        <!-- Include Popper.js -->
        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-QF1QIYkG0z6d+9QUGVZ8+K9q6p6W1p3yD1K9K1K9K1K9K1K9K1K9K1K9K1K9K1K" crossorigin="anonymous"></script>
