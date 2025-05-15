@@ -54,16 +54,66 @@
         </form>
       </div>
     </nav>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm bg-dark text-light">
-            <img src="UNFINISHED.avif" class="card-img-top" alt="Watch 1">
-            <div class="card-body">
-              <h5 class="card-title">UNDER CONSTRUCTION!</h5>
-              <p class="card-text">PLACEHOLDER FOR INFORMATION</p>
-              <a href="#" class="btn btn-primary">View Details</a>
-            </div>
+   
+    <h1>Register</h1>
+    <form action="submit-form" method="post">
+        <div class="mb-3">
+            <label for="source" class="form-label">Where did you hear about us?</label>
+            <select id="source" name="source" class="form-select" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Google">Google</option>
+                <option value="Word of Mouth">Word of Mouth</option>
+                <option value="Advert in local paper">Advert in local paper</option>
+                <option value="Yellow Pages">Yellow Pages</option>
+                <option value="Local">Local</option>
+            </select>
+        </div>
+      <form action="submit-form" method="post">
+       <div class="mb-3">
+        <label for="name">First Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your First Name" required>
+    </div>
+    <div class="mb-3">
+        <label for="name">Last Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your Last Name" required>
+    </div>
+
+        <label for="Number">Contact Number:</label>
+        <input type="number" id="email" name="email" placeholder="Enter your Number" required>
+       </div>
+        <div class="mb-3">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="email" name="email" placeholder="Enter your DOB" required>
+        </div>
+        <div class="mb-3"></div>
+        <label for="email">First Line of address:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your First line of address" required>
+    </div>
+    <div class="mb-3"></div>
+    <label for="email">Second Line of address:</label>
+    <input type="email" id="address" name="email" placeholder="Enter your Second line of address" required>
+</div>
+<div class="mb-3"></div>
+<label for="email">Postcode:</label>
+<input type="text" id="postcode" name="email" placeholder="Enter your Postcode" required>
+</div>  
+<hr>
+<div class="mb-3">
+<label for="email">Register Email:</label>
+<input type="email" id="email" name="email" placeholder="Enter your Registeration" required>
+</div>  
+
+<div class="mb-3">
+<label for="email">Password:</label>
+<input type="password" id="email" name="email" placeholder="Enter your Password" required>
+<label for="email">Confirm Password:</label>
+<input type="password" id="email" name="email" placeholder="Confirm your Password" required>
+</div>
+<hr>
+        <input type="submit" value="Submit">
+    
+        <input type="reset" value="Reset">
+      </form>
        <!-- Include jQuery -->
        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
        <!-- Include Popper.js -->

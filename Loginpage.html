@@ -54,16 +54,21 @@
         </form>
       </div>
     </nav>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm bg-dark text-light">
-            <img src="UNFINISHED.avif" class="card-img-top" alt="Watch 1">
-            <div class="card-body">
-              <h5 class="card-title">UNDER CONSTRUCTION!</h5>
-              <p class="card-text">PLACEHOLDER FOR INFORMATION</p>
-              <a href="#" class="btn btn-primary">View Details</a>
-            </div>
+    <form action="submit-form" method="post" style="background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+      <h1 class="text-center">Login</h1>
+      <body class="text-center">Please enter your Email address and password below to login</body>
+      <hr>
+          <label for="name">Username:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your Username" required>
+      
+          <label for="email">Password:</label>
+          <input type="password" id="email" name="email" placeholder="Enter your Password" required>
+              
+          <input type="submit" value="Login">
+      
+          <input type="reset" value="Reset">
+          <hr>
+      
 
        <!-- Include jQuery -->
        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
