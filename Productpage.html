@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    
   </head>
+  <style> 
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
+    }
+  </style>
   <body style="background-color: #1b1a1a;">
    
     <nav class="navbar navbar-expand-lg navbar-dark bg-grey fixed-top">
@@ -30,10 +36,10 @@
               The Collection
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="Productpage.html">Mens</a>
-              <a class="dropdown-item" href="Productpage.html">Ladies</a>
+              <a class="dropdown-item" href="Productpage.html?category=men">Mens</a>
+              <a class="dropdown-item" href="Productpage.html?category=women">Ladies</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="Productpage.html">Children</a>
+              <a class="dropdown-item" href="Productpage.html?category=kids">Children</a>
             </div>
           </li>
     
@@ -55,104 +61,147 @@
       </div>
     </nav>
     
+    // code for filter buttons
+    <div class="text-center mt-5">
+      <button class="btn btn-outline-light mx-2 filter-btn" data-category="all">All</button>
+  <button class="btn btn-outline-light mx-2 filter-btn" data-category="men">Men</button>
+  <button class="btn btn-outline-light mx-2 filter-btn" data-category="women">Women</button>
+  <button class="btn btn-outline-light mx-2 filter-btn" data-category="kids">Kids</button>
+</div>
     <div class="container mt-5">
       <div class="row" id="dynamic-container">
-        <!-- Cards will be dynamically added here -->
+        
       </div>
     </div>
     
     <script>
-      // Data for the cards
+      // Card Data - add more if you want. 
       const cardsData = [
         {
           imgSrc: "TISSOT.jpg",
           title: "Tissot - Everytime Patterned Black Leather Strap Watch",
           text: "£245.00",
-          link: "#"
+          link: "#",
+          category: "men"
         },
         {
           imgSrc: "Citizengreen.jpg",
           title: "Citizen - Weekender Eco-Drive Green",
           text: "£169.00",
-          link: "#"
+          link: "#",
+           category: "men"
         },
         {
           imgSrc: "skagen.jpg",
           title: "SKAGEN - Mens Aaren Ocean Seaweed #tide ocean material ",
           text: "£127.95",
-          link: "#"
+          link: "#",
+           category: "men"
         },
         {
           imgSrc: "CASIO.jpg",
           title: "CASIO -Vintage Gold Dual Display ",
           text: "£79.95",
-          link: "#"
+          link: "#",
+           category: "men"
         },
         {
           imgSrc: "manwatch.webp",
           title: "Longines Flagship Heritage 38.5mm – Classic Steel Case",
           text: "£809.99",
-          link: "#"
+          link: "#",
+           category: "men"
         },
         {
           imgSrc: "SEIKO.jpg",
           title: "SEIKO - Astron Limited Edition GPS Solar 3X",
           text: "£2,310.00",
-          link: "#"
+          link: "#",
+           category: "men"
         },
         {
           imgSrc: "RADO.jpg",
           title: "RADO - True Square Automatic Open Heart Bracelet Watch ",
           text: "£2,450.00",
-          link: "#"
+          link: "#",
+           category: "women"
         },
         {
           imgSrc: "TISSOTLADY.jpg",
           title: "TISSOT - Lovely Gold Tone Bracelet Watch",
           text: "£365.00",
-          link: "#"
+          link: "#",
+          category: "women"
         },
         {
           imgSrc: "swatchlady.jpg",
           title: "SWATCH -  Twice Again Strap Watch",
           text: "£73.95",
-          link: "#"
+          link: "#",
+          category: "women"
         },
         {
           imgSrc: "anotherrado.jpg",
-          title: "RADO - Ladies Integral Diamonds Quartz Black and Gold",
+          title: "RADO - Ladies Integral Diamonds Quartz",
           text: "£2,250.00",
-          link: "#"
+          link: "#",
+          category: "women"
         },
         {
           imgSrc: "fossil.jpg",
           title: "FOSSIL - Jacqueline Date Blush Leather Strap Watch",
           text: "£129.00",
-          link: "#"
+          link: "#",
+          category: "women"
         },
         {
           imgSrc: "kor.jpg",
           title: "MICHAEL KORS - Portia Mesh Rose Tone Bracelet Watch",
           text: "£219.00",
-          link: "#"
+          link: "#",
+          category: "women"
         },
         {
-          imgSrc: "UNFINISHED.avif",
-          title: "UCHILD WATCH!",
-          text: "PLACEHOLDER FOR INFORMATION",
-          link: "#"
+          imgSrc: "Barbie.jpg",
+          title: "Teacher - Barbie Pink Children's Time",
+          text: "£19.99",
+          link: "#",
+          category: "kids"
         },
         {
-          imgSrc: "UNFINISHED.avif",
-          title: "CHILD WATCH!",
-          text: "PLACEHOLDER FOR INFORMATION",
-          link: "#"
+          imgSrc: "Tikkers.avif",
+          title: "Tikkers - Teach Blue Silicone Strap Watch",
+          text: "£14.99",
+          link: "#",
+          category: "kids"
         },
         {
-          imgSrc: "UNFINISHED.avif",
-          title: "CHILD WATCH!",
-          text: "PLACEHOLDER FOR INFORMATION",
-          link: "#"
+          imgSrc: "avenger.jpg",
+          title: "Avengers - Black Case Black Rubber Strap",
+          text: "£19.99",
+          link: "#",
+          category: "kids"
+        },
+        {
+          imgSrc: "childwatch.jpg",
+          title: "Tikkers - Children's Yellow Fabric Strap Flower Time",
+          text: "£14.99",
+          link: "#",
+          category: "kids"
+        },
+        {
+          imgSrc: "girlwatch.avif",
+          title: "Tikkers - Children's White Strap Watch",
+          text: "£14.99",
+          link: "#",
+          category: "kids"
+        },
+        {
+          imgSrc: "smartwatch.avif",
+          title: "Tikkers - Children's Series 1 Printed Lilac Unicorns",
+          text: "£19.99",
+          link: "#",
+          category: "kids"
         },
         // Add more objects as needed
       ];
@@ -162,23 +211,56 @@
     
       // this loops through the data and create cards
       cardsData.forEach((card) => {
-        const cardHTML = `
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm bg-dark text-light">
-              <img src="${card.imgSrc}" class="card-img-top" alt="${card.title}">
-              <div class="card-body">
-                <h5 class="card-title">${card.title}</h5>
-                <p class="card-text">${card.text}</p>
-                <a href="${card.link}" class="btn btn-primary mb1" style="background-color: black; color: white;border: black"">View Details</a>
-              </div>
+  const cardDiv = document.createElement("div");
+  cardDiv.className = "col-md-4 product";
+  cardDiv.setAttribute("data-category", card.category); // <-- add this line
 
-              
-            </div>
-          </div>
-        `;
-        container.innerHTML += cardHTML;
-      });
+  cardDiv.innerHTML = `
+    <div class="card mb-4 shadow-sm bg-dark text-light">
+      <img src="${card.imgSrc}" class="card-img-top" alt="${card.title}">
+      <div class="card-body">
+        <h5 class="card-title">${card.title}</h5>
+        <p class="card-text">${card.text}</p>
+        <a href="${card.link}" class="btn btn-primary" style="background-color: black; color: white; border: black;">View Details</a>
+      </div>
+    </div>
+  `;
+  
+  container.appendChild(cardDiv);
+});
+
     </script>>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const products = document.querySelectorAll('.product');
+    
+        // Below actually filters the product based on its category
+        const filterProducts = (category) => {
+          products.forEach(product => {
+            if (category === 'all' || product.getAttribute('data-category') === category) {
+              product.style.display = 'block';
+            } else {
+              product.style.display = 'none';
+            }
+          });
+        };
+    
+        //  this code figures out which button was clicked and filters products
+        buttons.forEach(button => {
+          button.addEventListener('click', () => {
+            const selected = button.getAttribute('data-category');
+            filterProducts(selected);
+          });
+        });
+    
+        // this code checks URl and filters. 
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category') || 'all'; // Default to 'all' if no category is provided
+        filterProducts(category);
+      });
+    </script>
+    
             
    
          <!-- Include jQuery -->
