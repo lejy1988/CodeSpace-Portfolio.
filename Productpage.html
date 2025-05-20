@@ -53,13 +53,14 @@
           
         </ul>
                <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="cartDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+          <a class="nav-link dropdown-toggle" href="#" id="cartDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;"> <img src="shopping-cart.png" width="30" height="30" class="d-inline-block align-top" alt="" color="white">
             Cart (<span id="cart-count">0</span>)
           </a>
           <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="cartDropdown" style="min-width: 250px;">
             <div id="cart-items">No items in cart</div>
             <div class="dropdown-divider"></div>
             <strong>Total: £<span id="cart-total">0.00</span></strong>
+            <button style="background-color: black; color: white; border: black;">Check out</button>
           </div>
         </div>
         </div>
@@ -289,6 +290,9 @@ cart.forEach (item => {
 cartHTML += `<div>${item.title} - £${item.price.toFixed(2)}<button class="remove-item" data-title="${item.title}">Remove</button>
 </div>`;});
 document.getElementById('cart-items').innerHTML = cartHTML;
+
+document.getElementById('cart-total').textContent = total.toFixed(2);
+
   
   console.log('Cart total:', total);
 
@@ -297,7 +301,9 @@ document.getElementById('cart-items').innerHTML = cartHTML;
     console.log ('Cart now:', cart);
   });
 });
-const cartItemsContainer = document.getElementById('cart-items');//adding in a remove button guts
+const cartItemsContainer = document.getElementById('cart-items');
+
+//adding in a remove button guts
 cartItemsContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('remove-item')) {
     const titleToRemove = event.target.dataset.title;
