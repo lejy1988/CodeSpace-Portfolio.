@@ -421,7 +421,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     </script>
     
-            
+    <script>
+  
+      document.addEventListener('DOMContentLoaded', function () {
+        const cartMenu = document.querySelector('#cartDropdown')?.nextElementSibling;
+        if (cartMenu) {
+          cartMenu.addEventListener('click', function (e) {
+            e.stopPropagation();
+          });
+        }
+      });
+    </script>   
    
         // bootstrap and Jquery links.
 

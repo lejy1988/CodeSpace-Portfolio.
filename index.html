@@ -133,7 +133,7 @@ function updateCartUI() {
 
   let cartHTML = '';
   cart.forEach(item => {
-    cartHTML += `<div>${item.title} - £${item.price.toFixed(2)}<button class="remove-item" data-title="${item.title}">Remove</button></div>`;
+    cartHTML += `<div>${item.title} - £${item.price.toFixed(2)}<button class="removebtn btn-sm btn-outline-danger remove-item" data-title="${item.title}">Remove</button></div>`;
   });
 
   document.getElementById('cart-items').innerHTML = cartHTML;
@@ -163,7 +163,19 @@ document.getElementById('cart-items').addEventListener('click', (event) => {
     console.log('Removed item:', titleToRemove);
   }
 });
-      </script>
+</script>
+
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    const cartMenu = document.querySelector('#cartDropdown')?.nextElementSibling;
+    if (cartMenu) {
+      cartMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    }
+  });
+</script>
         <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <!-- Include Popper.js -->

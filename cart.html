@@ -122,10 +122,13 @@
         let total = 0;
   
         cart.forEach(item => {
-          cartHTML += `<div class="d-flex justify-content-between align-items-center mb-2">
-  <span>${item.title} - £${item.price.toFixed(2)}</span>
-  <button class="btn btn-sm btn-outline-danger remove-item" data-title="${item.title}">Remove</button>
-</div>`;
+          cartHTML += `
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <span>${item.title} - £${item.price.toFixed(2)}</span>
+    <button class="btn btn-sm btn-outline-danger remove-item" data-title="${item.title}">Remove</button>
+  </div>
+`;
+
 
           total += item.price;
         });
@@ -148,7 +151,17 @@
     });
   </script>
   
+  <script>
   
+    document.addEventListener('DOMContentLoaded', function () {
+      const cartMenu = document.querySelector('#cartDropdown')?.nextElementSibling;
+      if (cartMenu) {
+        cartMenu.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      }
+    });
+  </script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
 ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" 

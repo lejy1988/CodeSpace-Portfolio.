@@ -150,6 +150,18 @@ document.getElementById('cart-items').addEventListener('click', (event) => {
 });
         
        </script>
+
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    const cartMenu = document.querySelector('#cartDropdown')?.nextElementSibling;
+    if (cartMenu) {
+      cartMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    }
+  });
+</script>
        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
        
        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-QF1QIYkG0z6d+9QUGVZ8+K9q6p6W1p3yD1K9K1K9K1K9K1K9K1K9K1K9K1K9K1K" crossorigin="anonymous"></script>
