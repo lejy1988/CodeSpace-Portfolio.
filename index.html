@@ -133,7 +133,7 @@ function updateCartUI() {
 
   let cartHTML = '';
   cart.forEach(item => {
-    cartHTML += `<div>${item.title} - £${item.price.toFixed(2)}<button class="removebtn btn-sm btn-outline-danger remove-item" data-title="${item.title}">Remove</button></div>`;
+    cartHTML += `<div>${item.title} - £${item.price.toFixed(2)}<button class="removebtn btn-sm btn-outline-danger remove-item-item" data-title="${item.title}">Remove</button></div>`;
   });
 
   document.getElementById('cart-items').innerHTML = cartHTML;
