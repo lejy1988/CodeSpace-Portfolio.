@@ -60,7 +60,9 @@
             <div id="cart-items">No items in cart</div>
             <div class="dropdown-divider"></div>
             <strong>Total: £<span id="cart-total">0.00</span></strong>
+            <a href ="cart.html">
             <button style="background-color: black; color: white; border: black;">Check out</button>
+          </a>
           </div>
         </div>
         </div>
@@ -277,6 +279,7 @@
         data-title="${card.title}" 
         data-price="${card.price}" 
         data-description="${card.description}" 
+        data-img="${card.imgSrc}" 
         style="background-color: black; color: white; border: black;">
         View Details
       </button>
@@ -295,67 +298,51 @@
 });
 
 
-// this is the code for the add to card button
-let cart=[];
-const cartButtons = document.querySelectorAll('.add-to-cart') 
+//this is for the cart page and to locally store the cart information so it can be drawn into the cart page.
+let cart = JSON.parse(localStorage.getItem('mkCart')) || [];
+
+function updateCartUI() {
+  let total = 0;
+  cart.forEach(item => total += item.price);
+
+  document.getElementById('cart-total').textContent = total.toFixed(2);
+  document.getElementById('cart-count').textContent = cart.length;
+
+  let cartHTML = '';
+  cart.forEach(item => {
+    cartHTML += `<div>${item.title} - £${item.price.toFixed(2)}<button class="remove-item" data-title="${item.title}">Remove</button></div>`;
+  });
+
+  document.getElementById('cart-items').innerHTML = cartHTML;
+}
+updateCartUI();
+
+const cartButtons = document.querySelectorAll('.add-to-cart');
 cartButtons.forEach(button => {
   button.addEventListener('click', () => {
-    const cardBody = button.closest('.card-body')
     const title = button.dataset.title;
-    const price = button.dataset.price;
+    const price = parseFloat(button.dataset.price);
 
-    cart.push({title:title, price: parseFloat(price)})
-    //loop for cart total!
-    let total = 0;
-  for (let i = 0; i < cart.length; i++) {
-    total += cart[i].price;
-  }
-  
-  const count = cart.length;
-  document.getElementById('cart-count').textContent = count;
+    cart.push({ title, price });
+    localStorage.setItem('mkCart', JSON.stringify(cart));
+    updateCartUI();
 
-  
-  //cart total in navbar!
-  let cartHTML= "";
-cart.forEach (item => {
-cartHTML += `<div>${item.title} - £${item.price.toFixed(2)}<button class="remove-item" data-title="${item.title}">Remove</button>
-</div>`;});
-document.getElementById('cart-items').innerHTML = cartHTML;
-
-document.getElementById('cart-total').textContent = total.toFixed(2);
-
-  
-  console.log('Cart total:', total);
-
-    console.log ('Title:', title)
-    console.log ('Price:', price);
-    console.log ('Cart now:', cart);
+    console.log('Added to cart:', title, price);
+    console.log('Cart now:', cart);
   });
 });
-const cartItemsContainer = document.getElementById('cart-items');
-
-//adding in a remove button guts
-cartItemsContainer.addEventListener('click', (event) => {
+document.getElementById('cart-items').addEventListener('click', (event) => {
   if (event.target.classList.contains('remove-item')) {
     const titleToRemove = event.target.dataset.title;
-    console.log('Remove button clicked for:', titleToRemove);
     cart = cart.filter(item => item.title !== titleToRemove);
-
-    
-    let cartHTML = "";
-cart.forEach(item => {
-cartHTML += `<div>${item.title} - £${item.price.toFixed(2)}<button class="remove-item" data-title="${item.title}">Remove</button></div>`;
-});
-document.getElementById('cart-items').innerHTML = cartHTML;
-const count = cart.length;
-document.getElementById('cart-count').textContent = count;
-
-let total = 0;
-cart.forEach(item => total += item.price);
-document.getElementById('cart-total').textContent = total.toFixed(2);
-
+    localStorage.setItem('mkCart', JSON.stringify(cart));
+    updateCartUI();
+    console.log('Removed item:', titleToRemove);
   }
 });
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('detailsModal');
   const modalContent = document.getElementById('modalContent');
@@ -381,15 +368,17 @@ document.addEventListener('DOMContentLoaded', () => {
   closeModalBtn.addEventListener('click', closeModal);
   modalOverlay.addEventListener('click', closeModal);
 
-  // Handle "View Details" button clicks
+  //Action when View details clicked..
   document.addEventListener('click', function (e) {
     if (e.target.classList.contains('view-details-btn')) {
       const title = e.target.getAttribute('data-title');
       const price = e.target.getAttribute('data-price');
       const description = e.target.getAttribute('data-description');
+      const imgSrc = e.target.getAttribute('data-img');
 
       const modalInfo = `
-        <h2>${title}</h2>
+      <img src="${imgSrc}" alt="${title}" style="width: 100%; height: auto; margin-bottom: 15px; border-radius: 8px;">  
+      <h2>${title}</h2>
         <p>Price: £${parseFloat(price).toFixed(2)}</p>
         <p>${description}</p>
       `;
@@ -462,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
              <small class="text-muted">Privacy Policy | Terms of Service</small>
            </div>
          </footer>
-         <!-- Modal overlay -->
+         // this is for moduls! 
 <div id="modalOverlay" style="
 display:none;
 position: fixed;
@@ -471,7 +460,7 @@ background: rgba(0,0,0,0.5);
 z-index: 9998;
 "></div>
 
-<!-- Modal box -->
+/ Modul boxes
 <div id="detailsModal" style="
 display:none;
 position: fixed;

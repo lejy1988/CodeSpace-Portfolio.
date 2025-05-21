@@ -45,6 +45,20 @@
             <a class="nav-link" href="Register.html"style="color: white;">Register</a>
           </li>
         </ul>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="cartDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;"> <img src="shopping-cart.png" width="30" height="30" class="d-inline-block align-top" alt="" color="white">
+            Cart (<span id="cart-count">0</span>)
+          </a>
+          <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="cartDropdown" style="min-width: 250px;">
+            <div id="cart-items">No items in cart</div>
+            <div class="dropdown-divider"></div>
+            <strong>Total: £<span id="cart-total">0.00</span></strong>
+            <a href ="cart.html">
+            <button style="background-color: black; color: white; border: black;">Check out</button>
+          </a>
+          </div>
+        </div>
+        </div>
     
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -104,6 +118,51 @@
       </div>
     </div>
                       </div>
+
+      <script>
+//this is for the cart page and to locally store the cart information so it can be drawn into the cart page.
+let cart = JSON.parse(localStorage.getItem('mkCart')) || [];
+
+function updateCartUI() {
+  let total = 0;
+  cart.forEach(item => total += item.price);
+
+  document.getElementById('cart-total').textContent = total.toFixed(2);
+  document.getElementById('cart-count').textContent = cart.length;
+
+  let cartHTML = '';
+  cart.forEach(item => {
+    cartHTML += `<div>${item.title} - £${item.price.toFixed(2)}<button class="remove-item" data-title="${item.title}">Remove</button></div>`;
+  });
+
+  document.getElementById('cart-items').innerHTML = cartHTML;
+}
+updateCartUI();
+
+const cartButtons = document.querySelectorAll('.add-to-cart');
+cartButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const title = button.dataset.title;
+    const price = parseFloat(button.dataset.price);
+
+    cart.push({ title, price });
+    localStorage.setItem('mkCart', JSON.stringify(cart));
+    updateCartUI();
+
+    console.log('Added to cart:', title, price);
+    console.log('Cart now:', cart);
+  });
+});
+document.getElementById('cart-items').addEventListener('click', (event) => {
+  if (event.target.classList.contains('remove-item')) {
+    const titleToRemove = event.target.dataset.title;
+    cart = cart.filter(item => item.title !== titleToRemove);
+    localStorage.setItem('mkCart', JSON.stringify(cart));
+    updateCartUI();
+    console.log('Removed item:', titleToRemove);
+  }
+});
+      </script>
         <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <!-- Include Popper.js -->
