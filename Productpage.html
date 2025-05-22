@@ -12,10 +12,11 @@
       height: 250px;
       object-fit: cover;
     }
+   
   </style>
   <body style="background-color: #1b1a1a;">
    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-grey fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-grey fixed-top" style="background-color: rgba(78, 78, 78, 0.8)";>
       <a class="navbar-brand " href="index.html" style="color: white;">
         <img src="anotherbanner.png" width="30" height="30" class="d-inline-block align-top" alt="">
         MK Watches
@@ -419,8 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
             filterProducts(selected);
           });
         });
-    
-        // this code checks URl and filters. 
+
+
         const urlParams = new URLSearchParams(window.location.search);
         const category = urlParams.get('category') || 'all'; 
         filterProducts(category);
@@ -439,13 +440,38 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     </script>   
    
-        // bootstrap and Jquery links.
+  
+        <!-- bootstrap and Jquery links.-->>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" ></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
         
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            const toastEl = $('#cartToast');
+          
+            // Initialize toast with delay and auto hide
+            toastEl.toast({
+              delay: 3000,
+              autohide: true
+            });
+          
+            // Listen for clicks on Add to Cart buttons anywhere in the body
+            document.body.addEventListener('click', function (event) {
+              const btn = event.target.closest('.add-to-cart');
+              if (btn) {
+                console.log('Add to Cart clicked');
+                toastEl.toast('show'); // Show the toast
+              }
+            });
+          });
+          </script>
+          
         
+
+      
+    
          <hr style="border: 1px solid #f5f1f1; background-color: #000;">
          <footer class="bg-dark text-light py-4 mt-5">
           <div class="container text-center">
@@ -467,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <small class="text-muted">Privacy Policy | Terms of Service</small>
           </div>
         </footer>
-         // this is for moduls! 
+         <!-- this is for moduls! -->
 <div id="modalOverlay" style="
 display:none;
 position: fixed;
@@ -476,7 +502,7 @@ background: rgba(0,0,0,0.5);
 z-index: 9998;
 "></div>
 
-/ Modul boxes
+<!-- Modul boxes -->
 <div id="detailsModal" style="
 display:none;
 position: fixed;
@@ -498,5 +524,20 @@ border-radius: 8px;
 ">×</button>
 <div id="modalContent"></div>
 </div>
+
+<!-- TOAST NOTIFICATION FOR CART -->
+<div class="toast fade hide" id="cartToast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" 
+     style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
+  <div class="toast-header bg-success text-white">
+    <strong class="mr-auto">Cart</strong>
+    <button type="button" class="close text-white" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    ✅ Item added to cart!
+  </div>
+</div>
+
 
         </body>
